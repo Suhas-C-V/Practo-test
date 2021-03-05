@@ -1,23 +1,26 @@
-def LuhnAlgo(cardNo):
-    nDigits = len(cardNo)
-    nSum = 0
-    isSecond = False
 
-    for i in range(nDigits - 1, -1, -1):
-        d = ord(cardNo[i]) - ord('0')
+class Card:
 
-        if (isSecond == True):
-            d = d * 2
+    def LuhnAlgo(cardNo):
+        nDigits = len(cardNo)
+        nSum = 0
+        isSecond = False
 
-        nSum += d // 10  # adding 2nd digit
-        nSum += d % 10  # adding 1st digit
+        for i in range(nDigits - 1, -1, -1):
+            d = ord(cardNo[i]) - ord('0')
 
-        isSecond = not isSecond
+            if (isSecond == True):
+                d = d * 2
 
-    if (nSum % 10 == 0):
-        return True
-    else:
-        return False
+            nSum += d // 10  # adding 2nd digit
+            nSum += d % 10  # adding 1st digit
+
+            isSecond = not isSecond
+
+        if (nSum % 10 == 0):
+            return True
+        else:
+            return False
 
 
 # # Driver code
